@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Fundamentals</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="menu">
+        <p>View Highscores</p>
+        <!-- time counts down -->
+        <p>Time: <span class="time">60</span></p>
+    </div>
+
+    
+    <div id="homePage">
+        <h1>JavaScript Fundamentals</h1>
+        <p>
+            Try to answer the code-related questions within the time limit. <br>
+            Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+        <button id="startQuiz">Start</button>
+    </div>
+    
+    <div id="quiz">
+        <h1>Question</h1>
+        <div id="questions"></div>
+        <hr>
+        <p id="result"></p>
+    </div>
+
+    <div id="finalScore">
+        <h1>All Done!</h1>
+        <p>Your final score is <span id="score">0</span></p>
+        <form>
+            <input id="inputName" name="inputName"  type="text" placeholder="Nickname">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div id="highScores">
+        <h1>Highscores</h1>
+        <ol id="scoreList"></ol>
+        <button id="goHome">Go Home</button>
+        <button id="clearScores">Clear Scores</button>
+    </div>
+
+    <script src='./script.js'></script>
+</body>
+
+</html>
