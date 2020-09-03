@@ -1,7 +1,6 @@
 //data
 var clickCount = 0;
 var totalTime;
-
 var questionsList = [
     q1 = {
         question: "Commonly used data types DO NOT include:",
@@ -64,18 +63,19 @@ highScores.style.display = "none";
 
 addQuestion(q1);
 
-menu.addEventListener("click", function () {
-    toggleDisplay(highScores);
-    homePage.style.display = "none";
-    quiz.style.display = "none";
-    finalScore.style.display = "none";
-});
+if (quiz.style.display === "none") {
+    menu.addEventListener("click", function () {
+        toggleDisplay(highScores);
+        homePage.style.display = "none";
+        finalScore.style.display = "none";
+    });
+}
+
 
 startQuiz.addEventListener("click", function() {
     // start timer
     toggleDisplay(homePage);
-    toggleDisplay(quiz);
-    toggleDisplay(menu);
+    quiz.style.display = "block";
     timer();
 });
 
@@ -92,14 +92,13 @@ questions.addEventListener("click", function(event) {
     } else if (clickCount === 5) {
         // all done
         displayResults(event, clickCount);
-        toggleDisplay(quiz);
-        toggleDisplay(finalScore);
         menu.style.display = "flex";
     }
 });
 
 finalScore.addEventListener("click", function(event) {
     var userScore = parseInt(score.textContent) * 10 + parseInt(time.textContent);
+    
     event.preventDefault();
 
     if (event.target.matches("button")) {
@@ -107,7 +106,7 @@ finalScore.addEventListener("click", function(event) {
             return;
         }
         var newLi = document.createElement("li");
-        newLi.textContent = `${inputName.value}: score ${userScore}`;
+        newLi.textContent = `${inputName.value}: ${userScore}`;
         scoreList.appendChild(newLi);
 
         toggleDisplay(finalScore);
@@ -141,6 +140,8 @@ function timer() {
             console.log("clicks: " + clickCount)
 
             if (clickCount === 5 || totalTime === 0) {
+                toggleDisplay(quiz);
+                toggleDisplay(finalScore);
                 clearInterval(timerInterval);
             }
         }, 1000);
