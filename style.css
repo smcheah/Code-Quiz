@@ -1,0 +1,13 @@
+body {
+    margin: 0 10%;
+}
+#menu {
+    display: flex;
+    justify-content: space-between;
+}
+#homePage {
+    display: block;
+}
+#quiz, #finalScore, #highScores {
+    display: none;
+}
