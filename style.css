@@ -3,6 +3,9 @@ body {
     font-family: 'Nunito', sans-serif;
     font-size: larger;
 }
+h1 {
+    font-size: 6vw;
+}
 p {
     font-size: large;
 }
@@ -12,6 +15,7 @@ button {
     border: none;
     border-radius: 4px;
     padding: 5px;
+    margin: 1px;
 }
 input {
     width: 50%;
@@ -44,4 +48,16 @@ button, input {
 }
 #scoreList li:nth-child(2n) {
     background-color: rgb(200, 255, 237);
+}
+
+@media screen and (min-width: 1080px) {
+    h1 {
+       font-size: 68px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    h1 {
+       font-size: 24px;
+    }
 }
