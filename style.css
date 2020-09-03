@@ -45,6 +45,3 @@ button, input {
 #scoreList li:nth-child(2n) {
     background-color: rgb(200, 255, 237);
 }
-.time {
-    text-align: right;
-}
