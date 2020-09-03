@@ -1,4 +1,5 @@
 # Code-Quiz
+![](https://media.giphy.com/media/eNdgctq4FsvUPuOBCA/giphy.gif)
 
 A timed code quiz with multiple-choice questions on JavaScript fundamentals
 
