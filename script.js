@@ -1,6 +1,7 @@
 //data
 var clickCount = 0;
 var totalTime;
+
 var questionsList = [
     q1 = {
         question: "Commonly used data types DO NOT include:",
@@ -59,14 +60,22 @@ quiz.style.display = "none";
 finalScore.style.display = "none";
 highScores.style.display = "none";
 
+
+
 addQuestion(q1);
 
-menu.addEventListener("click", home());
+menu.addEventListener("click", function () {
+    toggleDisplay(highScores);
+    homePage.style.display = "none";
+    quiz.style.display = "none";
+    finalScore.style.display = "none";
+});
 
 startQuiz.addEventListener("click", function() {
     // start timer
     toggleDisplay(homePage);
     toggleDisplay(quiz);
+    toggleDisplay(menu);
     timer();
 });
 
@@ -85,11 +94,12 @@ questions.addEventListener("click", function(event) {
         displayResults(event, clickCount);
         toggleDisplay(quiz);
         toggleDisplay(finalScore);
+        menu.style.display = "flex";
     }
 });
 
 finalScore.addEventListener("click", function(event) {
-    var userScore = score.textContent
+    var userScore = parseInt(score.textContent) * 10 + parseInt(time.textContent);
     event.preventDefault();
 
     if (event.target.matches("button")) {
@@ -97,7 +107,7 @@ finalScore.addEventListener("click", function(event) {
             return;
         }
         var newLi = document.createElement("li");
-        newLi.textContent = `${inputName.value}: score ${parseInt(userScore)* 10 + parseInt(time.textContent)  }`;
+        newLi.textContent = `${inputName.value}: score ${userScore}`;
         scoreList.appendChild(newLi);
 
         toggleDisplay(finalScore);
@@ -105,7 +115,15 @@ finalScore.addEventListener("click", function(event) {
     }
 })
 
-goHome.addEventListener("click", home());
+goHome.addEventListener("click", function () {
+    totalTime = 60;
+    time.textContent = totalTime;
+    score.textContent = 0;
+
+    toggleDisplay(highScores);
+    toggleDisplay(homePage);
+})
+
 
 clearScores.addEventListener("click", function() {
     scoreList.textContent = "";
@@ -137,14 +155,6 @@ function toggleDisplay(page) {
     }
 }
 
-function home() {
-    totalTime = 60;
-    time.textContent = totalTime;
-    score.textContent = 0;
-
-    toggleDisplay(highScores);
-    toggleDisplay(homePage);
-}
 
 function nextQuestion(event, name, index) {
     displayResults(event, index);
@@ -158,7 +168,7 @@ function displayResults(event, index) {
         score.textContent++;
     } else {
         result.textContent = "Wrong!"
-        time.textContent -= 10;
+        totalTime -= 10;
     }
 }
 
